@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Wepublish Reatch Sync
+name: wepublish-reatch-sync
+version: 1.0.0

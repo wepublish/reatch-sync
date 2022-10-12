@@ -1,0 +1,13 @@
+app:
+  image: ""
+  imagePullPolicy: Always
+  imagePullSecret:
+  env:
+    WEPUBLISH_USERNAME: ''
+    WEPUBLISH_PASSWORD: ''
+    WEPUBLISH_URI: ''
+    DATABASE_URL: "postgresql://postgres@localhost:5432/database?schema=public&connect_timeout=300"
+  envFromSecretRefName:
+  properties: {}
+
+labels: {}
