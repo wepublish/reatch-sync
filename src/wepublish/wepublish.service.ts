@@ -1,4 +1,4 @@
-import { ApolloClient, ApolloError, gql } from '@apollo/client/core';
+import { ApolloClient } from '@apollo/client/core';
 import { Inject, Injectable } from '@nestjs/common';
 import {
   CreateArticle,
@@ -76,17 +76,10 @@ export class WepublishService {
   }
 
   async updateArticle(variables: UpdateArticleMutationVariables) {
-    try {
-      return await this.client.mutate<Mutation, UpdateArticleMutationVariables>(
-        {
-          mutation: UpdateArticle,
-          variables,
-        },
-      );
-    } catch (e) {
-      console.error(((e as ApolloError).networkError as any).result);
-      throw e;
-    }
+    return await this.client.mutate<Mutation, UpdateArticleMutationVariables>({
+      mutation: UpdateArticle,
+      variables,
+    });
   }
 
   async createAuthor(variables: CreateAuthorMutationVariables) {

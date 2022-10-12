@@ -15,10 +15,12 @@ import { WepublishConfiguration } from './wepublish-configuration';
     WepublishService,
     {
       provide: WepublishConfiguration,
-      useValue: {
-        username: process.env.WEPUBLISH_USERNAME,
-        password: process.env.WEPUBLISH_PASSWORD,
-      } as WepublishConfiguration,
+      useFactory() {
+        return {
+          username: process.env.WEPUBLISH_USERNAME,
+          password: process.env.WEPUBLISH_PASSWORD,
+        } as WepublishConfiguration;
+      },
     },
     {
       provide: WepublishService.ApolloClient,
