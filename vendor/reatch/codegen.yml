@@ -1,0 +1,15 @@
+overwrite: true
+generates:
+  ./vendor/reatch/api/index.ts:
+    schema: https://reatch.ch/index.php?p=admin/actions/graphql/api
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-document-nodes
+    config:
+      scalars:
+        DateTime: string
+        Color: string
+        Slug: string
+        RichText: Node[]
+        Upload: File

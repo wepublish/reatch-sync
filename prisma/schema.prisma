@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Entry {
+  reatchEntryId      String @id
+  wepublishArticleId String @unique
+}
+
+model Author {
+  reatchUserId      String @id
+  wepublishAuthorId String @unique
+}
+
+model Image {
+  reatchAssetId      String @id
+  wepublishImageId String @unique
+}

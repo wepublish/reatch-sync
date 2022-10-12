@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    working_dir: /app
+    command: bash -c 'yarn prisma migrate deploy && yarn run start:dev'
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://postgres@postgres:5432/database?schema=public&connect_timeout=300
+      WEPUBLISH_URI: 'https://api-reatch.wepublish.media/admin'
+      WEPUBLISH_USERNAME: ${WEPUBLISH_USERNAME}
+      WEPUBLISH_PASSWORD: ${WEPUBLISH_PASSWORD}
+    volumes:
+      - "./:/app"
+      - "./node_modules:/app/node_modules"
+    links:
+      - postgres
+    depends_on:
+      - postgres
+
+  postgres:
+    image: bitnami/postgresql:14
+    platform: linux/amd64
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRESQL_DATABASE=database
+

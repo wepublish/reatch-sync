@@ -1,0 +1,16 @@
+overwrite: true
+generates:
+  ./vendor/wepublish/api/private/index.ts:
+    schema: https://api-reatch.wepublish.media/admin
+    documents: ./vendor/wepublish/api/private/*.graphql
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-document-nodes
+    config:
+      scalars:
+        DateTime: string
+        Color: string
+        Slug: string
+        RichText: Node[]
+        Upload: File
