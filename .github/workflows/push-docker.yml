@@ -6,6 +6,14 @@ on:
       - main
 
 jobs:
+  date_sha_tag:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.image_tag.outputs.tag }}
+    steps:
+      - id: image_tag
+        run: echo "::set-output name=tag::$(date +%s)-${{ github.sha }}"
+
   build-and-push-docker:
     runs-on: ubuntu-latest
     steps:
