@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ReatchService } from './reatch.service';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client/core';
 import { fetch } from 'cross-fetch';
-import { ReatchController } from './reatch.controller';
 
 @Module({
   providers: [
@@ -23,7 +22,6 @@ import { ReatchController } from './reatch.controller';
       },
     },
   ],
-  controllers: [ReatchController],
   exports: [ReatchService],
 })
 export class ReatchModule {}
