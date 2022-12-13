@@ -9,4 +9,4 @@ COPY . .
 RUN yarn prisma generate
 RUN yarn run build
 
-CMD yarn run start:prod
+CMD yarn prisma migrate deploy && yarn run start:prod
