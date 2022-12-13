@@ -28,7 +28,7 @@ export class SyncService {
     readonly prisma: PrismaService,
   ) {}
 
-  @Cron(CronExpression.EVERY_DAY_AT_3AM)
+  @Cron(CronExpression.EVERY_10_MINUTES)
   async syncArticles() {
     await this.wepublish.authenticate();
     this.logger.log('Syncing articles');
