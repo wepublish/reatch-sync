@@ -28,7 +28,7 @@ export class SyncService {
     readonly prisma: PrismaService,
   ) {}
 
-  @Cron(CronExpression.EVERY_10_MINUTES)
+  @Cron(CronExpression.EVERY_HOUR)
   async syncArticles() {
     await this.wepublish.authenticate();
     this.logger.log('Syncing articles');
@@ -177,7 +177,7 @@ export class SyncService {
       blocks.push(...blockBlocks.filter((e) => e));
     }
     return {
-      title: entry.title + 'test',
+      title: entry.title,
       tags: [],
       seoTitle: entry.metaTitle,
       slug: entry.slug,
